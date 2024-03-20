@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image']) && $_FILES['
     $password = "";
     $database = "planilhaweb";
     $conn = new mysqli($host, $user, $password, $database, 666);
-    
+    echo "entrou php";
     if ($conn->connect_error) {
         die("Falha na conexão: " . $conn->connect_error);
     }
