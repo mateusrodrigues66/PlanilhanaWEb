@@ -8,11 +8,13 @@
 <title>APR - Análise e Apreciação de Risco</title>
 </head>
 <body>
-    <div class="wrapper">
-        <button id="btnAddImages" class="btn-style">Inserir Imagens</button>
-
-        <input type="file" id="imageInput" multiple style="display: none;" />
-        <div class="scroll-wrapper">
+  <div class="wrapper">
+    <form id="uploadForm" action="php/upload.php" method="post" enctype="multipart/form-data">
+        <button type="button" id="btnAddImages" class="btn-style">Inserir Imagens</button>
+        <input type="file" name="image" id="imageInput" style="display: none;" />
+    </form>
+    
+    <div class="scroll-wrapper">
         <table class="sticky-header">
           <thead>
             <tr class="sticky-header">
@@ -74,81 +76,27 @@
 </div>
 </div>
 <button id="btnBack" class="btn-style">Voltar</button>
-<div id="imagemModal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align:center;">
-  <span id="fecharModal" style="position:absolute; top:10px; right:25px; color:white; font-size:30px; cursor:pointer;">&times;</span>
-  <img id="imagemModalContent" style="max-width:80%; max-height:80%; margin-top:50px;">
-</div>
-<script>
-  document.getElementById('btnAddImages').addEventListener('click', function() {
-      document.getElementById('imageInput').click();
-  });
-  
-  document.getElementById('btnBack').addEventListener('click', function() {
-      window.location.href = 'index.html';
-  });
-  
-  document.getElementById('imageInput').addEventListener('change', function(event) {
-    const files = event.target.files;
-    const tableBody = document.querySelector('table tbody');
+    <!-- Modal para visualização da imagem -->
+    <div id="imagemModal" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); text-align:center;">
+        <span id="fecharModal" style="position:absolute; top:10px; right:25px; color:white; font-size:30px; cursor:pointer;">&times;</span>
+        <img id="imagemModalContent" style="max-width:80%; max-height:80%; margin-top:50px;">
+    </div>
+    <script>
+      document.getElementById('btnAddImages').addEventListener('click', function() {
+          document.getElementById('imageInput').click();
+      });
 
-    for (const file of files) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const itemNumber = tableBody.rows.length + 1;
-            const newRow = tableBody.insertRow();
-            newRow.insertCell(0).textContent = itemNumber; 
+      document.getElementById('imageInput').addEventListener('change', function() {
+          document.getElementById('uploadForm').submit(); // Atualizado para submeter o formulário
+      });
 
-            for (let i = 1; i < 8; i++) {
-                const editableCell = newRow.insertCell(i);
-                editableCell.contentEditable = 'true';
-                editableCell.innerHTML = '&nbsp;'; 
-            }
-            const options = ['N.A', 'SIM', 'NÃO'];
-            for (let i = 8; i <= 20; i++) {
-                const selectCell = newRow.insertCell(i);
-                const select = document.createElement('select');
-                options.forEach(option => {
-                    const optionElement = document.createElement('option');
-                    optionElement.value = option;
-                    optionElement.textContent = option;
-                    select.appendChild(optionElement);
-                });
-                selectCell.appendChild(select);
-            }
-            const imgCell = newRow.insertCell(21);
-            const image = document.createElement('img');
-            image.src = e.target.result;
-            image.alt = 'Imagem';
-            image.style = 'height: 1.8cm; width: 4cm; cursor: pointer;';
-            imgCell.appendChild(image);
-
-            image.onclick = function() {
-                document.getElementById('imagemModal').style.display = 'block';
-                document.getElementById('imagemModalContent').src = this.src;
-            };
-            for (let i = 22; i < 42; i++) {
-                newRow.insertCell(i).innerHTML = '&nbsp;';
-            }
-        };
-        reader.readAsDataURL(file);
-    }
-});
-
-  
-  document.getElementById('fecharModal').onclick = function() {
-      document.getElementById('imagemModal').style.display = 'none';
-  };
-
-
-window.addEventListener('scroll', function() {
-  const offset = window.scrollY;
-  const tableHeader = document.querySelector('.sticky-header th');
-  if (offset > tableHeader.offsetTop) {
-    tableHeader.classList.add('sticky');
-  } else {
-    tableHeader.classList.remove('sticky');
-  }
-});
+      document.getElementById('btnBack').addEventListener('click', function() {
+          window.location.href = 'index.html';
+      });
+      
+      document.getElementById('fecharModal').addEventListener('click', function() {
+          document.getElementById('imagemModal').style.display = 'none';
+      });
   </script>
   
 </body>
