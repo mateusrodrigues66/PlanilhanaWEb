@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image']) && $_FILES['
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
+        header('Location: nome_do_seu_arquivo_html.php?uploadSuccess');
         echo "Arquivo enviado e salvo no banco de dados com sucesso.";
     } else {
         echo "Erro ao salvar o arquivo no banco de dados.";
@@ -36,17 +37,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['image']) && $_FILES['
     echo "Nenhum arquivo enviado ou erro no upload.";
 }
 ?>
-
-<!DOCTYPE html> 
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Upload de Imagem para o Banco de Dados</title>
-</head>
-<body>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <input type="file" name="image" id="image">
-        <button type="submit">Enviar Imagem</button>
-    </form>
-</body>
-</html>
