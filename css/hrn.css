@@ -1,0 +1,159 @@
+.container {
+    max-width: 100%;
+}
+.wrapper {
+    width: max-content;
+  }
+.btn-style {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-style:hover {
+    background-color: #367c39;
+}
+  table {
+    width: 100%; 
+    border-collapse: collapse; 
+    white-space: nowrap; 
+  }
+  
+  th, td {
+    border: 1px solid #ddd; 
+    padding: 8px; 
+    text-align: left; 
+  }
+  
+  th {
+    background-color: #4CAF50; 
+    color: white;
+    
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2; 
+  }
+  
+  @media screen and (max-width: 600px) {
+    th, td {
+      padding: 4px; 
+      font-size: 12px; 
+    }
+  }
+
+  td img {
+    display: block;
+    width: 4cm;
+    height: 1.8cm;
+    object-fit: cover;
+  }
+  th:nth-child(22), td:nth-child(22) { 
+    width: 4cm;
+    min-width: 4cm; 
+    height: 1.8cm;
+  }
+  
+  td:nth-child(22) img { 
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+  }
+th:nth-child(1),
+th:nth-child(2),
+th:nth-child(3),
+th:nth-child(4),
+th:nth-child(5),
+th:nth-child(6),
+th:nth-child(7),
+th:nth-child(8) {
+  background-color: #DAA520; 
+  color: white;
+}
+th:nth-child(9),
+th:nth-child(10),
+th:nth-child(11),
+th:nth-child(12),
+th:nth-child(13),
+th:nth-child(14),
+th:nth-child(15),
+th:nth-child(16),
+th:nth-child(17),
+th:nth-child(18),
+th:nth-child(19),
+th:nth-child(20),
+th:nth-child(21) {
+  background-color: #32CD32; 
+  color: white;
+}
+th:nth-child(22),
+th:nth-child(23),
+th:nth-child(24),
+th:nth-child(25),
+th:nth-child(26),
+th:nth-child(27) {
+  background-color: #6495ED; 
+  color: white;
+}
+th:nth-child(28),
+th:nth-child(29),
+th:nth-child(30),
+th:nth-child(31),
+th:nth-child(32),
+th:nth-child(33),
+th:nth-child(34),
+th:nth-child(35),
+th:nth-child(36),
+th:nth-child(37) {
+  background-color: #FF69B4; 
+  color: white;
+}
+th:nth-child(38),
+th:nth-child(39),
+th:nth-child(40),
+th:nth-child(41) {
+  background-color: #1E90FF; 
+  color: white;
+}
+th:nth-child(42) {
+  background-color: #FF6347; 
+  color: white;
+}
+
+select {
+  width: 100%;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+#btnBack {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 100;
+  background-color: #4CAF50; 
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  width: auto; 
+  height: auto; 
+}
+.sticky-header th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.sticky-header th[colspan] {
+  background-color: #4CAF50; 
+  color: white;
+}
